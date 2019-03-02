@@ -19,16 +19,6 @@ export class CustomerController {
         private readonly customerService: CustomerService
     ) { }
 
-    @Get()
-    get() {
-        return new Result(null, true, [], null);
-    }
-
-    @Get(':document')
-    getById(@Param('document') document: string) {
-        return new Result(null, true, {}, null);
-    }
-
     @Post()
     @UseInterceptors(new ValidatorInterceptor(new CreateCustomerContract()))
     async post(@Body() model: CreateCustomerDto) {
@@ -38,7 +28,7 @@ export class CustomerController {
             );
 
             const customer = await this.customerService.create(
-                new Customer(model.name, model.document, model.email, null, null, null, null, user)
+                new Customer(model.name, model.document, model.email, [], null, null, null, user)
             );
 
             return new Result('Cliente criado com sucesso!', true, customer, null);

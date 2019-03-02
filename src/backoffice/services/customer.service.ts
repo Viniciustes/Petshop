@@ -1,9 +1,9 @@
 import { Model } from 'mongoose';
+import { Pet } from '../models/pet.model';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Customer } from '../models/customer.model';
 import { Address } from '../models/address.model';
-
+import { Customer } from '../models/customer.model';
 
 @Injectable()
 export class CustomerService {
@@ -14,25 +14,42 @@ export class CustomerService {
         return await customer.save();
     }
 
+    async createPet(document: string, data: Pet): Promise<Customer> {
+        const options = { new: true };
+
+        return await this.model.findOneAndUpdate({ document }, {
+            $push: {
+                pets: data,
+            },
+        }, options);
+    }
+
+    async updatePet(document: string, idPet: string, data: Pet): Promise<Customer> {
+
+        return await this.model.findOneAndUpdate({ document, 'pets._id': idPet }, {
+            $set: {
+                'pets.$': data
+            }
+        });
+    }
+
     async addBillingAddress(document: string, data: Address): Promise<Customer> {
+        const options = { upsert: true };
+
         return await this.model.findOneAndUpdate({ document }, {
             $set: {
                 billingAddress: data,
             },
-        },
-            {
-                upsert: true
-            });
+        }, options);
     }
 
     async addShippingAddress(document: string, data: Address): Promise<Customer> {
+        const options = { upsert: true };
+
         return await this.model.findOneAndUpdate({ document }, {
             $set: {
                 shippingAddress: data,
             },
-        },
-            {
-                upsert: true
-            });
+        }, options);
     }
 }
