@@ -1,7 +1,7 @@
-import { Contract } from '../contract';
-import { Flunt } from 'src/utils/flunt';
 import { Injectable } from '@nestjs/common';
-import { CreatePetsDto } from 'src/backoffice/dtos/create-pets-dto';
+import { Flunt } from 'src/utils/flunt';
+import { Contract } from 'src/modules/backoffice/contracts/contract';
+import { CreatePetsDto } from 'src/modules/backoffice/dtos/Pet/create-pets.dto';
 
 @Injectable()
 export class CreatePetsContract implements Contract {
@@ -9,7 +9,7 @@ export class CreatePetsContract implements Contract {
 
     validate(model: CreatePetsDto): boolean {
         const flunt = new Flunt();
-       
+
         flunt.hasMinLen(model.name, 2, 'Nome inválido');
         flunt.hasMinLen(model.gender, 3, 'Gênero inválido');
         flunt.hasMinLen(model.kind, 3, 'Tipo inválido');

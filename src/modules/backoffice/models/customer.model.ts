@@ -1,7 +1,7 @@
-import { Pet } from './pet.model';
-import { Address } from './address.model';
-import { CreditCard } from './credit-cart.model';
-import { User } from './user.model';
+import { Pet } from 'src/modules/backoffice/models/pet.model';
+import { User } from 'src/modules/backoffice/models//user.model';
+import { Address } from 'src/modules/backoffice/models//address.model';
+import { CreditCard } from 'src/modules/backoffice/models//credit-cart.model';
 
 export class Customer {
     constructor(
