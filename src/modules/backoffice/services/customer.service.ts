@@ -35,6 +35,10 @@ export class CustomerService {
             .exec();
     }
 
+    async delete(id: number) {
+        await this.model.delete(id);
+    }
+
     async query(query: QueryDto): Promise<Customer[]> {
         return await this.model
             .find(query.query, query.fields, { skip: query.skip, limit: query.take })

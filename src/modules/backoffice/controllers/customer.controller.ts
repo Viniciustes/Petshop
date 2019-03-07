@@ -32,7 +32,7 @@ export class CustomerController {
                 new Customer(model.name, model.document, model.email, [], null, null, null, user)
             );
 
-            return new Result('Cliente criado com sucesso!', true, customer, null);
+            return new Result('Cliente cadastrado com sucesso!', true, customer, null);
 
         } catch (error) {
             this.error(error);
@@ -91,9 +91,16 @@ export class CustomerController {
         }
     }
 
-    @Delete()
-    delete(@Body() customer: Customer) {
-        return new Result('Cliente excluído com sucesso!', true, customer, null);
+    @Delete(':id')
+    async delete(@Param('id') id) {
+        try {
+            await this.service.delete(id);
+
+            return new Result('Cliente excluído com sucesso!', true, id, null);
+
+        } catch (error) {
+            this.error(error);
+        }
     }
 
     error(error: any) {
