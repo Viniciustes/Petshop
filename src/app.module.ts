@@ -3,7 +3,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BackofficeModule } from 'src/modules/backoffice/backoffice.module';
 import { StoreModule } from 'src/modules/store/store.module';
-import { AppConstants } from './app.constants';
+import { AppConstants } from 'src/app.constants';
 
 @Module({
   imports: [
