@@ -3,20 +3,23 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BackofficeModule } from 'src/modules/backoffice/backoffice.module';
 import { StoreModule } from 'src/modules/store/store.module';
+import { AppConstants } from './app.constants';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://viniciustes:valen160412@ds040089.mlab.com:40089/petshop'),
+    MongooseModule.forRoot(AppConstants.adressMongoDB),
     TypeOrmModule.forRoot({
       type: 'mssql',
-      host: '(localdb)\\MSSQLLocalDB',
-      port: 3306,
-      database: 'PetshopDB',
+      host: AppConstants.adressSqlDB,
+      database: AppConstants.databaseSql,
+      username: AppConstants.usernameSql,
+      password: AppConstants.passwordSql,
       synchronize: true,
       options: {
         useUTC: true,
         trustedConnection: true,
-    },
+        encrypt: true
+      },
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
     }),
     BackofficeModule,
