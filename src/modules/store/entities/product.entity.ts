@@ -13,4 +13,10 @@ export class Product {
 
     @Column({ length: 250, nullable: true })
     description: string;
+
+    @Column('decimal')
+    price: number;
+
+    @Column('decimal')
+    quantityOnHand: number;
 }

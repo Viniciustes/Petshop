@@ -1,5 +1,5 @@
 import { Controller, Get, HttpException, HttpStatus, Post, Body, Put, Param, Delete } from "@nestjs/common";
-import { ProductService } from "../services/product.service";
+import { ProductService } from "src/modules/store/services/product.service";
 import { Result } from "src/modules/backoffice/models/result.model";
 import { Product } from "src/modules/store/entities/product.entity";
 
