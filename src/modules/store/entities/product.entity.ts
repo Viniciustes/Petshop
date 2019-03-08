@@ -8,9 +8,9 @@ export class Product {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({ length: 80 })
+    @Column({ length: 80, nullable: true })
     title: string;
 
-    @Column('text')
+    @Column({ length: 250, nullable: true })
     description: string;
 }
