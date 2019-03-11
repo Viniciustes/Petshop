@@ -12,7 +12,7 @@ export class AddressService {
     async create(document: string, data: Address, type: AddressType): Promise<Customer> {
         const options = { upsert: true };
 
-        if (type == AddressType.Billing) {
+        if (type === AddressType.Billing) {
             return await this.model
                 .findOneAndUpdate({ document }, {
                     $set: {

@@ -18,9 +18,9 @@ export class ValidatorInterceptor implements NestInterceptor {
                     'Ops, algo saiu errado',
                     false,
                     null,
-                    this.contract.errors
+                    this.contract.errors,
                 ),
-                HttpStatus.BAD_REQUEST
+                HttpStatus.BAD_REQUEST,
             );
         }
 

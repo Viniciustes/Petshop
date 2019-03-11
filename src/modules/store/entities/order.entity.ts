@@ -1,8 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, OneToMany, Column } from "typeorm";
-import { OrderItem } from "src/modules/store/entities/order-item.entity";
+import { Entity, PrimaryGeneratedColumn, OneToMany, Column } from 'typeorm';
+import { OrderItem } from 'src/modules/store/entities/order-item.entity';
 
 @Entity({
-    name: 'order'
+    name: 'order',
 })
 
 export class Order {
@@ -21,5 +21,4 @@ export class Order {
 
     @OneToMany(() => OrderItem, (oi) => oi.order)
     items: OrderItem[];
-
 }

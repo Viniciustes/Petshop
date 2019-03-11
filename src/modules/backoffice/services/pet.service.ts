@@ -24,8 +24,8 @@ export class PetService {
         return await this.model
             .findOneAndUpdate({ document, 'pets._id': idPet }, {
                 $set: {
-                    'pets.$': data
-                }
+                    'pets.$': data,
+                },
             });
     }
 }

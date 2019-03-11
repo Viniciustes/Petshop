@@ -1,16 +1,16 @@
-import { Controller, Post, UseInterceptors, Param, Body, HttpException, HttpStatus, Put } from "@nestjs/common";
-import { Pet } from "src/modules/backoffice/models/pet.model";
-import { Result } from "src/modules/backoffice/models/result.model";
-import { PetService } from "src/modules/backoffice/services/pet.service";
-import { CreatePetsDto } from "src/modules/backoffice/dtos/Pet/create-pets.dto";
-import { ValidatorInterceptor } from "src/interceptors/validator.interceptor";
-import { CreatePetsContract } from "src/modules/backoffice/contracts/pet/create-pet.contract";
+import { Controller, Post, UseInterceptors, Param, Body, HttpException, HttpStatus, Put } from '@nestjs/common';
+import { Pet } from 'src/modules/backoffice/models/pet.model';
+import { Result } from 'src/modules/backoffice/models/result.model';
+import { PetService } from 'src/modules/backoffice/services/pet.service';
+import { CreatePetsDto } from 'src/modules/backoffice/dtos/Pet/create-pets.dto';
+import { ValidatorInterceptor } from 'src/interceptors/validator.interceptor';
+import { CreatePetsContract } from 'src/modules/backoffice/contracts/pet/create-pet.contract';
 
 @Controller('v1/pets')
 export class PetController {
 
     constructor(
-        private readonly service: PetService
+        private readonly service: PetService,
     ) { }
 
     @Post(':document')

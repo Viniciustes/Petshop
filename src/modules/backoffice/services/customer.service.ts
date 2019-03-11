@@ -17,7 +17,7 @@ export class CustomerService {
         return await this.model
             .findOneAndUpdate({ document },
                 {
-                    name: data.name
+                    name: data.name,
                 });
     }
 

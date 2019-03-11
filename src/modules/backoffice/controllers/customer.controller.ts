@@ -17,7 +17,7 @@ export class CustomerController {
 
     constructor(
         private readonly service: CustomerService,
-        private readonly accountService: AccountService
+        private readonly accountService: AccountService,
     ) { }
 
     @Post()
@@ -29,7 +29,7 @@ export class CustomerController {
             );
 
             const customer = await this.service.create(
-                new Customer(model.name, model.document, model.email, [], null, null, null, user)
+                new Customer(model.name, model.document, model.email, [], null, null, null, user),
             );
 
             return new Result('Cliente cadastrado com sucesso!', true, customer, null);
@@ -80,7 +80,7 @@ export class CustomerController {
     @UseInterceptors(new ValidatorInterceptor(new UpdateCustomerContract()))
     async update(@Param('document') document, @Body() model: UpdateCustomerDto) {
         try {
-            var customer = new Customer(model.name, null, null, null, null, null, null, null);
+            const customer = new Customer(model.name, null, null, null, null, null, null, null);
 
             await this.service.update(document, customer);
 

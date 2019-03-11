@@ -1,15 +1,15 @@
-import { Post, Param, Body, UseInterceptors, HttpException, HttpStatus, Controller } from "@nestjs/common";
-import { CreditCard } from "src/modules/backoffice/models/credit-cart.model";
-import { ValidatorInterceptor } from "src/interceptors/validator.interceptor";
-import { CreateCreditCardContract } from "src/modules/backoffice/contracts/creditcard/create-credit-card-contract";
-import { CreditCardService } from "src/modules/backoffice/services/creditCard.service";
-import { Result } from "src/modules/backoffice/models/result.model";
+import { Post, Param, Body, UseInterceptors, HttpException, HttpStatus, Controller } from '@nestjs/common';
+import { CreditCard } from 'src/modules/backoffice/models/credit-cart.model';
+import { ValidatorInterceptor } from 'src/interceptors/validator.interceptor';
+import { CreateCreditCardContract } from 'src/modules/backoffice/contracts/creditcard/create-credit-card-contract';
+import { CreditCardService } from 'src/modules/backoffice/services/creditCard.service';
+import { Result } from 'src/modules/backoffice/models/result.model';
 
 @Controller('v1/creditcards')
 export class CreditCardController {
 
     constructor(
-        private readonly service: CreditCardService
+        private readonly service: CreditCardService,
     ) { }
 
     @Post(':document')

@@ -1,14 +1,14 @@
-import { Injectable } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
-import { Repository } from "typeorm";
-import { Order } from "src/modules/store/entities/order.entity";
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Order } from 'src/modules/store/entities/order.entity';
 
 @Injectable()
 export class OrderService {
 
     constructor(
         @InjectRepository(Order)
-        private readonly repository: Repository<Order>
+        private readonly repository: Repository<Order>,
     ) { }
 
     async getByNumber(number: string): Promise<Order> {
@@ -19,7 +19,7 @@ export class OrderService {
 
     async getByCustomer(customer: string): Promise<Order[]> {
         return await this.repository.find({
-            customer: customer
+            customer: customer,
         });
     }
 

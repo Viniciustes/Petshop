@@ -10,8 +10,9 @@ export class GetQueryContract implements Contract {
     validate(model: QueryDto): boolean {
         const flunt = new Flunt();
 
-        if (!model.query)
-            model.query = {}
+        if (!model.query) {
+            model.query = {};
+        }
 
         flunt.isGreaterThan(model.take, 25, 'Busca não pode exceder o máximo de 25 registros.');
 

@@ -1,9 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, ManyToOne, Column } from "typeorm";
-import { Order } from "src/modules/store/entities/order.entity";
-import { Product } from "src/modules/store/entities/product.entity";
+import { Entity, PrimaryGeneratedColumn, ManyToOne, Column } from 'typeorm';
+import { Order } from 'src/modules/store/entities/order.entity';
+import { Product } from 'src/modules/store/entities/product.entity';
 
 @Entity({
-    name: 'orderItem'
+    name: 'orderItem',
 })
 
 export class OrderItem {

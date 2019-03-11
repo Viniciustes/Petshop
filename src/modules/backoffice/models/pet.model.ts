@@ -3,6 +3,6 @@ export class Pet {
         public name: string,
         public gender: string,
         public kind: string,
-        public brand: string
+        public brand: string,
     ) { }
 }

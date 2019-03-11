@@ -6,17 +6,17 @@ export const UserSchema = new mongoose.Schema({
         required: true,
         trim: true,
         index: {
-            unique: true
+            unique: true,
         }
     },
     password: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
     },
     active: {
         type: Boolean,
         required: true,
-        default: true
+        default: true,
     }
 });

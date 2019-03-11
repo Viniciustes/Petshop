@@ -1,11 +1,11 @@
-import { Controller, Get, Param, HttpException, HttpStatus, Post, Body } from "@nestjs/common";
-import { OrderService } from "src/modules/store/services/order.service";
-import { ProductService } from "src/modules/store/services/product.service";
-import { OrderItemService } from "src/modules/store/services/order-item.service";
-import { Result } from "src/modules/backoffice/models/result.model";
-import { OrderItemDto } from "src/modules/store/dtos/order-item.dto";
-import { Order } from "../entities/order.entity";
-import { OrderItem } from "../entities/order-item.entity";
+import { Controller, Get, Param, HttpException, HttpStatus, Post, Body } from '@nestjs/common';
+import { OrderService } from 'src/modules/store/services/order.service';
+import { ProductService } from 'src/modules/store/services/product.service';
+import { OrderItemService } from 'src/modules/store/services/order-item.service';
+import { Result } from 'src/modules/backoffice/models/result.model';
+import { OrderItemDto } from 'src/modules/store/dtos/order-item.dto';
+import { Order } from 'src/modules/store/entities/order.entity';
+import { OrderItem } from 'src/modules/store/entities/order-item.entity';
 
 
 @Controller('v1/orders')
@@ -13,7 +13,7 @@ export class OrderController {
     constructor(
         private readonly service: OrderService,
         private readonly productService: ProductService,
-        private readonly orderItemService: OrderItemService
+        private readonly orderItemService: OrderItemService,
     ) { }
 
     @Get(':number')
@@ -43,8 +43,8 @@ export class OrderController {
     @Post()
     async post(@Body() model: OrderItemDto[]) {
         try {
-            let order = new Order();
-            order.customer = '12345678912'; // vai vim do Token (jwt)
+            const order = new Order();
+            order.customer = '12345678901'; // vai vim do Token (jwt)
             order.date = new Date();
             order.number = '1B2D3D8R';
             order.items = [];
@@ -52,8 +52,8 @@ export class OrderController {
             await this.service.save(order);
 
             for (const item of model) {
-                let product = await this.productService.getById(item.product);
-                let orderItem = new OrderItem();
+                const product = await this.productService.getById(item.product);
+                const orderItem = new OrderItem();
                 orderItem.order = order;
                 orderItem.product = product;
                 orderItem.price = product.price;
@@ -61,6 +61,8 @@ export class OrderController {
 
                 await this.orderItemService.save(orderItem);
             }
+
+            return new Result('Pedido cadastrado com sucesso!', true, order, null);
 
         } catch (error) {
             this.error(error);

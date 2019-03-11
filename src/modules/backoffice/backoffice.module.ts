@@ -17,25 +17,25 @@ import { CreditCardController } from 'src/modules/backoffice/controllers/creditc
         MongooseModule.forFeature([
             {
                 name: 'Customer',
-                schema: CustomerSchema
+                schema: CustomerSchema,
             },
             {
                 name: 'User',
-                schema: UserSchema
+                schema: UserSchema,
             }
         ])],
     controllers: [
         AddressController,
         CreditCardController,
-        CustomerController, 
-        PetController
+        CustomerController,
+        PetController,
     ],
     providers: [
         AccountService,
         AddressService,
         CreditCardService,
         CustomerService,
-        PetService
+        PetService,
     ]
 })
 export class BackofficeModule { }

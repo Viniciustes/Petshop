@@ -17,6 +17,6 @@ Create table product (
 
 SELECT * FROM product
 
-insert into product values('Mouse', 'Mouse Pad')
-insert into product values('Computador', 'Computador Philios')
-insert into product values('Celular', 'Samsumg S10')
+insert into product values('Mouse', 'Mouse Pad', 100, 5)
+insert into product values('Computador', 'Computador Philios', 1500, 3)
+insert into product values('Celular', 'Samsumg S10', 7442, 15)

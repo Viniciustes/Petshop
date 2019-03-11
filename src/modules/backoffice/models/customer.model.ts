@@ -12,6 +12,6 @@ export class Customer {
         public billingAddress: Address,
         public shippingAddress: Address,
         public creditCard: CreditCard,
-        public user: User
+        public user: User,
     ) { }
 }

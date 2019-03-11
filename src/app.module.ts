@@ -18,12 +18,12 @@ import { AppConstants } from 'src/app.constants';
       options: {
         useUTC: true,
         trustedConnection: true,
-        encrypt: true
+        encrypt: true,
       },
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
     }),
     BackofficeModule,
-    StoreModule
+    StoreModule,
   ],
   controllers: [],
   providers: [],
